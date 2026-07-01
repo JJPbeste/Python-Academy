@@ -63,6 +63,25 @@ def sleep():
         question()
         definition()
 
+def status():
+    pass    
+
+def status():
+    create_status = input("Möchtest du den Status deines Haustiers sehen? (ja/nein)\n>")
+    if create_status == "ja":
+        status = {
+        "Name": pet_name,
+        "Hunger": "Satt",
+        "Glück": "Glücklich",
+        "Energie": "Ausgeruht"
+         }
+        print("Status deines Haustiers:")
+        
+    else:
+        question()
+        definition()
+        pass
+
 
 def quit_program():
     print("Auf Wiedersehen!")
