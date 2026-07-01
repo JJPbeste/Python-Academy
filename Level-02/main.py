@@ -1,84 +1,90 @@
-from os import name
+pet_name = "Artemis"
 
+print("============================\nDein Persönliches Haustier\n============================")
 
-print("============================\n " "Dein Persönliches Haustier\n============================")
 
 def question():
-    print("Was möchtest du tun?\n \n1. füttern\n2. streicheln\n3. spielen\n4. schlafen\n5. Beenden")
+    print("Was möchtest du tun?\n\n1. füttern\n2. streicheln\n3. spielen\n4. schlafen\n5. Beenden")
+
 
 def main():
-    print ("Wie möchtest du dein Haustier nennen?\n>> ",end= "")
-    name = input()
-    if name:
-        print(f"Hallo! Ich bin {name}!\nSchön dich kennenzulernen!")
+    global pet_name
+    print("Wie möchtest du dein Haustier nennen?\n>> ", end="")
+    user_name = input()
+    if user_name:
+        pet_name = user_name
+        print(f"Hallo! Ich bin {pet_name}!\nSchön dich kennenzulernen!")
     else:
-        print(f"Hallo! Ich bin Artemis!\nSchön dich kennenzulernen!")
+        pet_name = "Artemis"
+        print(f"Hallo! Ich bin {pet_name}!\nSchön dich kennenzulernen!")
     question()
+    definition()
 
-def feed(): 
+
+def feed():
     input_value = input("Möchtest du dein Haustier füttern? (ja/nein)\n>")
     if input_value == "ja":
-        print(f"Du hast {name} gefüttert!\n " f"{name} ist jetzt satt!")
+        print(f"Du hast {pet_name} gefüttert!\n{pet_name} ist jetzt satt!")
         question()
-
+        definition()
     elif input_value == "nein":
         question()
+        definition()
+
 
 def stroke():
     input_value = input("Möchtest du dein Haustier streicheln? (ja/nein)\n>")
     if input_value == "ja":
-        print(f"Du hast {name} gestreichelt!\n " f"{name} ist jetzt glücklich!")
+        print(f"Du hast {pet_name} gestreichelt!\n{pet_name} ist jetzt glücklich!")
         question()
-
+        definition()
     elif input_value == "nein":
         question()
+        definition()
+
 
 def play():
     input_value = input("Möchtest du mit deinem Haustier spielen? (ja/nein)\n>")
     if input_value == "ja":
-        print(f"Du hast mit {name} gespielt!\n " f"{name} ist jetzt müde!\n")
+        print(f"Du hast mit {pet_name} gespielt!\n{pet_name} ist jetzt müde!\n")
         sleep()
-
     elif input_value == "nein":
         question()
+        definition()
+
 
 def sleep():
     input_value = input("Möchtest du dein Haustier schlafen lassen? (ja/nein)\n>")
     if input_value == "ja":
-        print(f"{name} schläft jetzt!\n " f"{name} ist jetzt ausgeruht!")
+        print(f"{pet_name} schläft jetzt!\n{pet_name} ist jetzt ausgeruht!")
         question()
-
+        definition()
     elif input_value == "nein":
         question()
+        definition()
 
-def exit():
+
+def quit_program():
     print("Auf Wiedersehen!")
-    quit()
+    raise SystemExit
 
-def quit():
-    print("Auf Wiedersehen!")
-    exit()
 
-def list():
-    list = {1: "füttern", 2: "streicheln", 3: "spielen", 4: "schlafen", 5: "Beenden"}
-
-def difinition():
-    if 1 in list:
+def definition():
+    choice = input("Wähle eine Option (1-5): ")
+    if choice == "1":
         feed()
-    elif 2 in list:
+    elif choice == "2":
         stroke()
-    elif 3 in list:
+    elif choice == "3":
         play()
-    elif 4 in list:
+    elif choice == "4":
         sleep()
-    elif 5 in list:
-        print("Auf Wiedersehen!")
-        exit()
+    elif choice == "5":
+        quit_program()
+    else:
+        print("Ungültige Auswahl.")
+        question()
+        definition()
+
 
 main()
-feed()
-stroke()
-play()
-sleep()
-exit()
-
